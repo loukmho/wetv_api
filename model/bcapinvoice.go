@@ -5,7 +5,7 @@ import (
 	"github.com/jmoiron/sqlx"
 	"time"
 	"errors"
-	m "github.com/loukmho/we"
+	"github.com/loukmho/wetv_api/model"
 )
 
 type ApInvoice struct {
