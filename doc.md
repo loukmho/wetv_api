@@ -1,9 +1,5 @@
 #API Document wetv
 
-##Table BCItem
-
-###API Name
-
 #####Table BCAr
 
 ######API Name
