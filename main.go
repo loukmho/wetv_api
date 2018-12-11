@@ -2,45 +2,50 @@ package main
 
 import (
 	"github.com/gin-gonic/gin"
-	c "github.com/loukmho/bcaccount_api/ctrl"
+	we "github.com/loukmho/wetv_api/ctrl"
 )
 
 func main() {
 	r := gin.New()
-	r.Use(cors.Default())
 
 	//Module Buy ///////////////////////////////////////////////////////////////////
 
-	r.GET("/apinvoice", b.SearchApInvoiceByDocNo)
-	r.GET("/apinvoices", b.SearchApInvoiceByKeyword)
-	r.POST("/apinvoice", b.InsertAndEditApinvoice)
+	r.GET("/vendor", we.SearchVendorByCode)
+	r.GET("/vendors", we.SearchVendorByKeyword)
+	r.POST("/vendor", we.InsertAndEditVendor)
+
+	r.GET("/apinvoice", we.SearchApInvoiceByDocNo)
+	r.GET("/apinvoices", we.SearchApInvoiceByKeyword)
+	r.POST("/apinvoice", we.InsertAndEditApinvoice)
+
+	r.GET("/payment", we.SearchPaymentByDocNo)
+	r.GET("/payments", we.SearchPaymentByKeyword)
+	r.POST("/payment", we.InsertAndEditPayment)
 
 	//Module Customer ///////////////////////////////////////////////////////////////////
 
-	r.GET("/customer", c.SearchCustomerByCode)
-	r.GET("/customers", c.SearchCustomerByKeyword)
-	r.POST("/customer", c.InsertAndEditCustomer)
+	r.GET("/customer", we.SearchCustomerByCode)
+	r.GET("/customers", we.SearchCustomerByKeyword)
+	r.POST("/customer", we.InsertAndEditCustomer)
 
-	r.GET("/receipt1", c.SearchReceipt1ByDocNo)
-	r.GET("/receipts1", c.SearchReceipt1ByKeyword)
-	r.POST("/receipt1", c.InsertAndEditReceipt1)
+	r.GET("/arinvoice", we.SearchArInvoiceByDocNo)
+	r.GET("/arinvoices", we.SearchArInvoiceByKeyword)
+	r.POST("/arinvoice", we.InsertAndEditArInvoice)
 
-	//Module Sale ///////////////////////////////////////////////////////////////////
-
-	r.GET("/arinvoice", s.SearchArInvoiceByDocNo)
-	r.GET("/arinvoices", s.SearchArInvoiceByKeyword)
-	r.POST("/arinvoice", s.InsertAndEditArInvoice)
+	r.GET("/receipt1", we.SearchReceipt1ByDocNo)
+	r.GET("/receipt1s", we.SearchReceipt1ByKeyword)
+	r.POST("/receipt1", we.InsertAndEditReceipt1)
 
 	//Module Inventory ///////////////////////////////////////////////////////////////////
 
-	r.GET("/item", i.SearchItemByCode)
-	r.GET("/items", i.SearchItemByKeyword)
-	r.POST("/item", i.InsertAndEditItem)
+	r.GET("/item", we.SearchItemByCode)
+	r.GET("/items", we.SearchItemByKeyword)
+	r.POST("/item", we.InsertAndEditItem)
 
-	r.GET("/item", i.SearchItemByCode)
-	r.GET("/items", i.SearchItemByKeyword)
-	r.POST("/item", i.InsertAndEditItem)
+	r.GET("/issue", we.SearchStkIssuetByDocNo)
+	r.GET("/issues", we.SearchStkIssueByKeyword)
+	r.POST("/issue", we.InsertAndEditStkIssue)
 
 
-	r.Run(":8001")
+	r.Run(":8003")
 }

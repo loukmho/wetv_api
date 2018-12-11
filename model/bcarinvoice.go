@@ -4,7 +4,6 @@ import (
 	"github.com/jmoiron/sqlx"
 	"fmt"
 	"errors"
-	m "github.com/loukmho/bcaccount_api/model"
 	"time"
 )
 
@@ -207,8 +206,8 @@ func (inv *ArInvoice) InsertAndEditArInvoice(db *sqlx.DB) error {
 
 	now := time.Now()
 
-	def := m.Default{}
-	def = m.LoadDefaultData("bcdata.json")
+	def := Default{}
+	def = LoadDefaultData("bcdata.json")
 
 	fmt.Println("TaxRate = ", def.TaxRateDefault)
 
@@ -223,7 +222,7 @@ func (inv *ArInvoice) InsertAndEditArInvoice(db *sqlx.DB) error {
 	AfterDepositAmount = inv.AfterDiscount - inv.SumOfDeposit1
 
 	if (inv.BeforeTaxAmount == 0 && inv.TaxAmount == 0) {
-		inv.BeforeTaxAmount, inv.TaxAmount, inv.TotalAmount = m.CalcTaxItem(inv.TaxType, inv.TaxRate, AfterDepositAmount)
+		inv.BeforeTaxAmount, inv.TaxAmount, inv.TotalAmount = CalcTaxItem(inv.TaxType, inv.TaxRate, AfterDepositAmount)
 	}
 	for _, sub_item := range inv.Subs {
 		if (sub_item.Qty != 0) {
@@ -340,7 +339,7 @@ func (inv *ArInvoice) InsertAndEditArInvoice(db *sqlx.DB) error {
 
 	if (inv.SumOfDeposit1 != 0 && inv.TaxRate != 0) {
 		if inv.TaxType == 1 {
-			inv.SumOfDeposit2 = inv.SumOfDeposit1 - m.ToFixed(inv.SumOfDeposit1-((inv.SumOfDeposit1*100)/(100+float64(inv.TaxRate))), 2)
+			inv.SumOfDeposit2 = inv.SumOfDeposit1 - ToFixed(inv.SumOfDeposit1-((inv.SumOfDeposit1*100)/(100+float64(inv.TaxRate))), 2)
 		} else {
 			inv.SumOfDeposit2 = inv.SumOfDeposit1 //+ m.ToFixed(inv.SumOfDeposit1-((inv.SumOfDeposit1*100)/(100+float64(inv.TaxRate))), 2)
 		}
@@ -432,8 +431,8 @@ func (inv *ArInvoice) InsertAndEditArInvoice(db *sqlx.DB) error {
 			item.HomeAmount = item.Amount
 			item.NetAmount = item.Amount
 		case inv.TaxType == 1:
-			taxamount := m.ToFixed(item.Amount-((item.Amount*100)/(100+float64(inv.TaxRate))), 2)
-			beforetaxamount := m.ToFixed(item.Amount-taxamount, 2)
+			taxamount := ToFixed(item.Amount-((item.Amount*100)/(100+float64(inv.TaxRate))), 2)
+			beforetaxamount := ToFixed(item.Amount-taxamount, 2)
 			item.HomeAmount = beforetaxamount
 			item.NetAmount = beforetaxamount
 		case inv.TaxType == 2:
@@ -583,10 +582,10 @@ func (inv *ArInvoice) InsertAndEditArInvoice(db *sqlx.DB) error {
 			d.LineNumber = depLineNumber
 
 			if inv.TaxType == 0 {
-				depNetAmount = d.Amount - (m.ToFixed(d.Amount-((d.Amount*100)/(100+float64(inv.TaxRate))), 2))
+				depNetAmount = d.Amount - (ToFixed(d.Amount-((d.Amount*100)/(100+float64(inv.TaxRate))), 2))
 
 			} else {
-				depNetAmount = d.Amount - (m.ToFixed(d.Amount-((d.Amount*100)/(100+float64(inv.TaxRate))), 2))
+				depNetAmount = d.Amount - (ToFixed(d.Amount-((d.Amount*100)/(100+float64(inv.TaxRate))), 2))
 			}
 
 			sqldep := `set dateformat dmy      insert into dbo.bcardeposituse(DocNo,DepositNo,DocDate,MyDescription,Balance,Amount,DeposTaxType,NetAmount,LineNumber) values(?,?,?,?,?,?,?,?,?)`

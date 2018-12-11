@@ -39,7 +39,7 @@ type Vendor struct {
 
 func (vnd *Vendor) SearchVendorByCode(db *sqlx.DB, code string) error {
 
-	sql := `set dateformat dmy     select Code, Name1, isnull(Name2,'') as Name2, isnull(DefDeliveryAddr,'') as DefDeliveryAddr, isnull(DefContactCode,'') as DefContactCode,isnull(Address,'') as Address, isnull(Telephone,'') as Telephone, isnull(Fax,'') as Fax, isnull(AccountCode,'') as AccountCode, isnull(IDCardNo,'') as IDCardNo, isnull(BankAccNo,'') as BankAccNo, CreditDay, LeadTime, DefaultTaxRate,isnull(TaxNo,'') as TaxNo, isnull(PicFileName,'') as PicFileName, isnull(TypeCode,'') as TypeCode, isnull(EmailAddress,'') as EmailAddress, isnull(GroupCode,'') as GroupCode, isnull(GroupOfDebt,,'') as GroupOfDebt,PersonType, ActiveStatus, CreatorCode, CreateDateTime, isnull(LastEditorCode,'') as LastEditorCode, isnull(LastEditDateT,'') as LastEditDateT from dbo.bcap where code = ?`
+	sql := `set dateformat dmy     select Code, Name1, isnull(Name2,'') as Name2, isnull(DefDeliveryAddr,'') as DefDeliveryAddr, isnull(DefContactCode,'') as DefContactCode,isnull(Address,'') as Address, isnull(Telephone,'') as Telephone, isnull(Fax,'') as Fax, isnull(AccountCode,'') as AccountCode, isnull(IDCardNo,'') as IDCardNo, isnull(BankAccNo,'') as BankAccNo, CreditDay, LeadTime, DefaultTaxRate,isnull(TaxNo,'') as TaxNo, isnull(PicFileName,'') as PicFileName, isnull(TypeCode,'') as TypeCode, isnull(EmailAddress,'') as EmailAddress, isnull(GroupCode,'') as GroupCode, isnull(GroupOfDebt,'') as GroupOfDebt,PersonType, ActiveStatus, CreatorCode, CreateDateTime, isnull(LastEditorCode,'') as LastEditorCode, isnull(LastEditDateT,'') as LastEditDateT from dbo.bcap with (nolock) where code = ?`
 	err := db.Get(vnd, sql, code)
 	if err != nil {
 		fmt.Println(err.Error())
@@ -49,8 +49,8 @@ func (vnd *Vendor) SearchVendorByCode(db *sqlx.DB, code string) error {
 }
 
 func (ctm *Vendor) SearchVendorByKeyword(db *sqlx.DB, keyword string) (vndList []*Vendor, err error) {
-	sql := `set dateformat dmy     select Code, Name1, isnull(Name2,'') as Name2, isnull(DefDeliveryAddr,'') as DefDeliveryAddr, isnull(DefContactCode,'') as DefContactCode,isnull(Address,'') as Address, isnull(Telephone,'') as Telephone, isnull(Fax,'') as Fax, isnull(AccountCode,'') as AccountCode, isnull(IDCardNo,'') as IDCardNo, isnull(BankAccNo,'') as BankAccNo, CreditDay, LeadTime, DefaultTaxRate,isnull(TaxNo,'') as TaxNo, isnull(PicFileName,'') as PicFileName, isnull(TypeCode,'') as TypeCode, isnull(EmailAddress,'') as EmailAddress, isnull(GroupCode,'') as GroupCode, isnull(GroupOfDebt,,'') as GroupOfDebt,PersonType, ActiveStatus, CreatorCode, CreateDateTime, isnull(LastEditorCode,'') as LastEditorCode, isnull(LastEditDateT,'') as LastEditDateT from dbo.bcap where (code  like '%'+?+'%' or name1 like '%'+?+'%' or Address like '%'+?+'%')`
-	err = db.Select(&vndList, sql, keyword, keyword, keyword, keyword)
+	sql := `set dateformat dmy     select Code, Name1, isnull(Name2,'') as Name2, isnull(DefDeliveryAddr,'') as DefDeliveryAddr, isnull(DefContactCode,'') as DefContactCode,isnull(Address,'') as Address, isnull(Telephone,'') as Telephone, isnull(Fax,'') as Fax, isnull(AccountCode,'') as AccountCode, isnull(IDCardNo,'') as IDCardNo, isnull(BankAccNo,'') as BankAccNo, CreditDay, LeadTime, DefaultTaxRate,isnull(TaxNo,'') as TaxNo, isnull(PicFileName,'') as PicFileName, isnull(TypeCode,'') as TypeCode, isnull(EmailAddress,'') as EmailAddress, isnull(GroupCode,'') as GroupCode, isnull(GroupOfDebt,'') as GroupOfDebt,PersonType, ActiveStatus, CreatorCode, CreateDateTime, isnull(LastEditorCode,'') as LastEditorCode, isnull(LastEditDateT,'') as LastEditDateT from dbo.bcap with (nolock)  where (code  like '%'+?+'%' or name1 like '%'+?+'%' or Address like '%'+?+'%')`
+	err = db.Select(&vndList, sql, keyword, keyword, keyword)
 	if err != nil {
 		fmt.Println(err.Error())
 		return nil, err

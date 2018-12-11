@@ -1,21 +1,22 @@
 package ctrl
 
-import(
+import (
 	"github.com/gin-gonic/gin"
-	"github.com/loukmho/wetv_api/model"
 	"net/http"
+	"github.com/loukmho/wetv_api/model"
 	"fmt"
 )
 
-func InsertAndEditArInvoice(c *gin.Context){
+
+func InsertAndEditApinvoice(c *gin.Context){
 	c.Keys = HeaderKeys
 
-	inv := &model.ArInvoice{}
-	err := c.BindJSON(inv)
+	apv := &model.ApInvoice{}
+	err := c.BindJSON(apv)
 	if err != nil {
 		fmt.Println(err.Error())
 	}
-	err = inv.InsertAndEditArInvoice(Dbc)
+	err = apv.InsertAndEditApInvoice(Dbc)
 	rs := Response{}
 	if err != nil {
 		rs.Status = "error"
@@ -23,45 +24,45 @@ func InsertAndEditArInvoice(c *gin.Context){
 		c.JSON(http.StatusNotFound, rs)
 	}else{
 		rs.Status = "success"
-		rs.Data = inv
+		rs.Data = apv
 		c.JSON(http.StatusNotFound, rs)
 	}
 }
 
-func SearchArInvoiceByDocNo(c *gin.Context) {
+func SearchApInvoiceByDocNo(c *gin.Context){
 	c.Keys = HeaderKeys
 
 	docno := c.Request.URL.Query().Get("docno")
-	inv := new(model.ArInvoice)
-	err := inv.SearchArInvoiceByDocNo(Dbc, docno)
+	apv := new(model.ApInvoice)
+	err := apv.SearchApInvoiceByDocNo(Dbc, docno)
 
 	rs := Response{}
 	if err != nil {
 		rs.Status = "error"
 		rs.Message = "No Content and Error : " + err.Error()
-		c.JSON(http.StatusNotFound,rs)
+		c.JSON(http.StatusNotFound, rs)
 	}else{
 		rs.Status = "success"
-		rs.Data = inv
+		rs.Data = apv
 		c.JSON(http.StatusOK, rs)
 	}
 }
 
-func SearchArInvoiceByKeyword(c *gin.Context){
+func SearchApInvoiceByKeyword(c *gin.Context){
 	c.Keys = HeaderKeys
 
 	keyword := c.Request.URL.Query().Get("keyword")
+	apv := new(model.ApInvoice)
+	apvs, err := apv.SearchApInvoiceByKeyword(Dbc, keyword)
 
-	inv := new(model.ArInvoice)
-	ins, err := inv.SearchArInvoiceByKeyword(Dbc, keyword)
 	rs := Response{}
 	if err != nil {
 		rs.Status = "error"
 		rs.Message = "No Content and Error : " + err.Error()
-		c.JSON(http.StatusNotFound,rs)
+		c.JSON(http.StatusNotFound, rs)
 	}else{
 		rs.Status = "success"
-		rs.Data = ins
+		rs.Data = apvs
 		c.JSON(http.StatusOK, rs)
 	}
 }

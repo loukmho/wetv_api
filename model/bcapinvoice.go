@@ -5,7 +5,6 @@ import (
 	"github.com/jmoiron/sqlx"
 	"time"
 	"errors"
-	m "github.com/loukmho/wetv_api/model"
 )
 
 type ApInvoice struct {
@@ -184,8 +183,8 @@ func (apv *ApInvoice) InsertAndEditApInvoice(db *sqlx.DB) error {
 
 	now := time.Now()
 
-	def := m.Default{}
-	def = m.LoadDefaultData("bcdata.json")
+	def := Default{}
+	def = LoadDefaultData("bcdata.json")
 
 	fmt.Println("TaxRate = ", def.TaxRateDefault)
 
@@ -200,7 +199,7 @@ func (apv *ApInvoice) InsertAndEditApInvoice(db *sqlx.DB) error {
 	AfterDepositAmount = apv.AfterDiscount - apv.SumOfDeposit1
 
 	if (apv.BeforeTaxAmount == 0 && apv.TaxAmount == 0) {
-		apv.BeforeTaxAmount, apv.TaxAmount, apv.TotalAmount = m.CalcTaxItem(apv.TaxType, apv.TaxRate, AfterDepositAmount)
+		apv.BeforeTaxAmount, apv.TaxAmount, apv.TotalAmount = CalcTaxItem(apv.TaxType, apv.TaxRate, AfterDepositAmount)
 	}
 	for _, sub_item := range apv.Subs {
 		if (sub_item.Qty != 0) {
@@ -305,7 +304,7 @@ func (apv *ApInvoice) InsertAndEditApInvoice(db *sqlx.DB) error {
 
 	if (apv.SumOfDeposit1 != 0 && apv.TaxRate != 0) {
 		if apv.TaxType == 1 {
-			apv.SumOfDeposit2 = apv.SumOfDeposit1 - m.ToFixed(apv.SumOfDeposit1-((apv.SumOfDeposit1*100)/(100+float64(apv.TaxRate))), 2)
+			apv.SumOfDeposit2 = apv.SumOfDeposit1 - ToFixed(apv.SumOfDeposit1-((apv.SumOfDeposit1*100)/(100+float64(apv.TaxRate))), 2)
 		} else {
 			apv.SumOfDeposit2 = apv.SumOfDeposit1 //+ m.ToFixed(inv.SumOfDeposit1-((inv.SumOfDeposit1*100)/(100+float64(inv.TaxRate))), 2)
 		}
@@ -369,8 +368,8 @@ func (apv *ApInvoice) InsertAndEditApInvoice(db *sqlx.DB) error {
 			item.HomeAmount = item.Amount
 			item.NetAmount = item.Amount
 		case apv.TaxType == 1:
-			taxamount := m.ToFixed(item.Amount-((item.Amount*100)/(100+float64(apv.TaxRate))), 2)
-			beforetaxamount := m.ToFixed(item.Amount-taxamount, 2)
+			taxamount := ToFixed(item.Amount-((item.Amount*100)/(100+float64(apv.TaxRate))), 2)
+			beforetaxamount := ToFixed(item.Amount-taxamount, 2)
 			item.HomeAmount = beforetaxamount
 			item.NetAmount = beforetaxamount
 		case apv.TaxType == 2:
@@ -513,10 +512,10 @@ func (apv *ApInvoice) InsertAndEditApInvoice(db *sqlx.DB) error {
 			d.LineNumber = depLineNumber
 
 			if apv.TaxType == 0 {
-				depNetAmount = d.Amount - (m.ToFixed(d.Amount-((d.Amount*100)/(100+float64(apv.TaxRate))), 2))
+				depNetAmount = d.Amount - (ToFixed(d.Amount-((d.Amount*100)/(100+float64(apv.TaxRate))), 2))
 
 			} else {
-				depNetAmount = d.Amount - (m.ToFixed(d.Amount-((d.Amount*100)/(100+float64(apv.TaxRate))), 2))
+				depNetAmount = d.Amount - (ToFixed(d.Amount-((d.Amount*100)/(100+float64(apv.TaxRate))), 2))
 			}
 
 			sqldep := `set dateformat dmy      insert into dbo.bcapdeposituse(DocNo,DepositNo,DocDate,MyDescription,Balance,Amount,DeposTaxType,NetAmount,LineNumber) values(?,?,?,?,?,?,?,?,?)`

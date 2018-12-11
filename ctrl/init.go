@@ -4,7 +4,7 @@ package ctrl
 import (
 	"fmt"
 	_ "github.com/denisenkom/go-mssqldb"
-	"github.com/loukmho/bcaccount_api/config"
+	"github.com/loukmho/wetv_api/config"
 	"github.com/jmoiron/sqlx"
 )
 
@@ -13,8 +13,8 @@ var HeaderKeys = make(map[string]interface{})
 func setHeader() {
 
 	HeaderKeys = map[string]interface{}{
-		"Server":                       "smart_pump_invoice",
-		"Host":                         "nopadol.net:6000",
+		"Server":                       "wetv api",
+		"Host":                         "localhost:8001",
 		"Content_Type":                 "application/json",
 		"Access-Control-Allow-Origin":  "*",
 		"Access-Control-Allow-Methods": "GET, POST, PUT, DELETE",

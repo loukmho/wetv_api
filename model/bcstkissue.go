@@ -3,7 +3,6 @@ package model
 import (
 	"github.com/jmoiron/sqlx"
 	"fmt"
-	m "github.com/loukmho/bcaccount_api/model"
 	"errors"
 	"time"
 )
@@ -98,8 +97,8 @@ func (iss *StkIssue) InsertAndEditStkIssue(db *sqlx.DB) error {
 		return nil
 	}
 
-	def := m.Default{}
-	def = m.LoadDefaultData("bcdata.json")
+	def := Default{}
+	def = LoadDefaultData("bcdata.json")
 	iss.GLFormat = def.StkIssueGLFormat
 
 	iss.IsCompleteSave = 1
@@ -183,7 +182,7 @@ func (iss *StkIssue) SearchStkIssueByDocNo(db *sqlx.DB, docno string) error {
 		return err
 	}
 
-	sqlsub := `set dateformat dmy     select MyType, DocNo, isnull(IssueType,'') as IssueType, isnull(ItemCode,'') as ItemCode, DocDate, isnull(DepartCode,'') as DepartCode, isnull(Personcode,'') as Personcode, isnull(MyDescription,'') as MyDescription, isnull(ItemName,'') as ItemName, isnull(WHCode,'') as WHCode, isnull(ShelfCode,'') as ShelfCode, isnull(RefNo,'') as RefNo, Qty, RetQty, SumOfCost, Price, Amount, isnull(UnitCode,'') as UnitCode, isnull(BarCode,'') as BarCode, IsCancel, LineNumber, AVERAGECOST, RefLineNumber, isnull(LotNumber,'') as LotNumber, isnull(PackingRate1,0) as PackingRate1, isnull(PackingRate2,0) as PackingRate2 from dbo.bcstkissuesub with (nolock) where docno = ? order by linenumber`
+	sqlsub := `set dateformat dmy     select MyType, isnull(IssueType,'') as IssueType, isnull(ItemCode,'') as ItemCode, isnull(MyDescription,'') as MyDescription, isnull(ItemName,'') as ItemName, isnull(WHCode,'') as WHCode, isnull(ShelfCode,'') as ShelfCode, isnull(RefNo,'') as RefNo, Qty, RetQty, SumOfCost, Price, Amount, isnull(UnitCode,'') as UnitCode, isnull(BarCode,'') as BarCode, IsCancel, LineNumber, AVERAGECOST, RefLineNumber, isnull(LotNumber,'') as LotNumber, isnull(PackingRate1,0) as PackingRate1, isnull(PackingRate2,0) as PackingRate2 from dbo.bcstkissuesub with (nolock) where docno = ? order by linenumber`
 	err = db.Select(&iss.Subs, sqlsub, iss.DocNo)
 	if err != nil {
 		return err
@@ -200,7 +199,7 @@ func (iss *StkIssue) SearchStkIssueByKeyword(db *sqlx.DB, keyword string) (isss 
 	}
 
 	for _, sub := range isss {
-		sqlsub := `set dateformat dmy     select MyType, DocNo, isnull(IssueType,'') as IssueType, isnull(ItemCode,'') as ItemCode, DocDate, isnull(DepartCode,'') as DepartCode, isnull(Personcode,'') as Personcode, isnull(MyDescription,'') as MyDescription, isnull(ItemName,'') as ItemName, isnull(WHCode,'') as WHCode, isnull(ShelfCode,'') as ShelfCode, isnull(RefNo,'') as RefNo, Qty, RetQty, SumOfCost, Price, Amount, isnull(UnitCode,'') as UnitCode, isnull(BarCode,'') as BarCode, IsCancel, LineNumber, AVERAGECOST, RefLineNumber, isnull(LotNumber,'') as LotNumber, isnull(PackingRate1,0) as PackingRate1, isnull(PackingRate2,0) as PackingRate2 from dbo.bcstkissuesub with (nolock) where docno = ? order by linenumber`
+		sqlsub := `set dateformat dmy     select MyType, isnull(IssueType,'') as IssueType, isnull(ItemCode,'') as ItemCode, isnull(MyDescription,'') as MyDescription, isnull(ItemName,'') as ItemName, isnull(WHCode,'') as WHCode, isnull(ShelfCode,'') as ShelfCode, isnull(RefNo,'') as RefNo, Qty, RetQty, SumOfCost, Price, Amount, isnull(UnitCode,'') as UnitCode, isnull(BarCode,'') as BarCode, IsCancel, LineNumber, AVERAGECOST, RefLineNumber, isnull(LotNumber,'') as LotNumber, isnull(PackingRate1,0) as PackingRate1, isnull(PackingRate2,0) as PackingRate2 from dbo.bcstkissuesub with (nolock) where docno = ? order by linenumber`
 		err = db.Select(&sub.Subs, sqlsub, sub.DocNo)
 		if err != nil {
 			return nil, err
