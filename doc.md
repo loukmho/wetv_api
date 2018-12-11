@@ -1,12 +1,12 @@
-# API Document wetv
+# Standard API Document
 
 ## Table BCItem
 
 ### API Name
 
-#####Table BCAr
+##### Table BCAr (ทะเบียนลูกค้า)
 
-######API Name
+###### API Name
 
 - ค้นหาลูกค้าโดยค้นหาจาก รหัสลูกค้า
 - GET 
