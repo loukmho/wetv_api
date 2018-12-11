@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c2047e8d-ae07-4000-b98f-27b28412bf8f" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/doc.md" beforeDir="false" afterPath="$PROJECT_DIR$/doc.md" afterDir="false" />
-    </list>
+    <list default="true" id="c2047e8d-ae07-4000-b98f-27b28412bf8f" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -119,8 +117,8 @@
     <packageJsonPaths />
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="355" />
-    <option name="y" value="1069" />
+    <option name="x" value="64" />
+    <option name="y" value="-11" />
     <option name="width" value="1303" />
     <option name="height" value="780" />
   </component>
@@ -314,12 +312,12 @@
       <workItem from="1544514774073" duration="1703000" />
       <workItem from="1544518268148" duration="2047000" />
       <workItem from="1544520348411" duration="1153000" />
-      <workItem from="1544521694445" duration="912000" />
+      <workItem from="1544521694445" duration="1058000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="72002000" />
+    <option name="totallyTimeSpent" value="72148000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="355" y="1069" width="1303" height="780" extended-state="6" />
@@ -333,7 +331,7 @@
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
       <window_info anchor="right" id="Maven Projects" order="3" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.349454" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.349454" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.36349455" />
       <window_info id="Capture Tool" order="2" />
