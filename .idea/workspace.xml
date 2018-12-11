@@ -15,8 +15,8 @@
       <file leaf-file-name="main.go" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="242">
-              <caret line="48" lean-forward="true" selection-start-line="48" selection-end-line="48" />
+            <state relative-caret-position="675">
+              <caret line="48" selection-start-line="48" selection-end-line="48" />
             </state>
           </provider>
         </entry>
@@ -34,16 +34,8 @@
         <entry file="file://$PROJECT_DIR$/doc.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="15">
-                <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
-                <folding>
-                  <element signature="e#3798#3820#0" />
-                  <element signature="e#16245#16266#0" />
-                  <element signature="e#23534#23551#0" />
-                  <element signature="e#27381#27396#0" />
-                  <element signature="e#30162#30184#0" />
-                  <element signature="e#39210#39230#0" />
-                </folding>
+              <first_editor relative-caret-position="481">
+                <caret line="1595" column="3" lean-forward="true" selection-start-line="1595" selection-start-column="3" selection-end-line="1595" selection-end-column="3" />
               </first_editor>
               <second_editor />
             </state>
@@ -53,8 +45,8 @@
       <file leaf-file-name="bcstkissue.go" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/model/bcstkissue.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="57" column="58" lean-forward="true" selection-start-line="57" selection-start-column="58" selection-end-line="57" selection-end-column="58" />
+            <state relative-caret-position="780">
+              <caret line="57" column="58" selection-start-line="57" selection-start-column="58" selection-end-line="57" selection-end-column="58" />
             </state>
           </provider>
         </entry>
@@ -128,6 +120,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -144,8 +138,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="AndroidView" />
     </panes>
   </component>
@@ -313,14 +305,15 @@
       <workItem from="1544518268148" duration="2047000" />
       <workItem from="1544520348411" duration="1153000" />
       <workItem from="1544521694445" duration="1058000" />
+      <workItem from="1544565572133" duration="254000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="72148000" />
+    <option name="totallyTimeSpent" value="72402000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="355" y="1069" width="1303" height="780" extended-state="6" />
+    <frame x="64" y="-11" width="1303" height="780" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
@@ -336,7 +329,7 @@
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.36349455" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="2" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.22709164" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2310757" />
       <window_info anchor="right" id="Database" order="3" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -688,31 +681,23 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/model/bcstkissue.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="57" column="58" lean-forward="true" selection-start-line="57" selection-start-column="58" selection-end-line="57" selection-end-column="58" />
+        <state relative-caret-position="780">
+          <caret line="57" column="58" selection-start-line="57" selection-start-column="58" selection-end-line="57" selection-end-column="58" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/main.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="48" lean-forward="true" selection-start-line="48" selection-end-line="48" />
+        <state relative-caret-position="675">
+          <caret line="48" selection-start-line="48" selection-end-line="48" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/doc.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="15">
-            <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
-            <folding>
-              <element signature="e#3798#3820#0" />
-              <element signature="e#16245#16266#0" />
-              <element signature="e#23534#23551#0" />
-              <element signature="e#27381#27396#0" />
-              <element signature="e#30162#30184#0" />
-              <element signature="e#39210#39230#0" />
-            </folding>
+          <first_editor relative-caret-position="481">
+            <caret line="1595" column="3" lean-forward="true" selection-start-line="1595" selection-start-column="3" selection-end-line="1595" selection-end-column="3" />
           </first_editor>
           <second_editor />
         </state>
