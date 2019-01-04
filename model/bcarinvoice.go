@@ -149,8 +149,8 @@ type InvItem struct {
 
 type ListInvRecMoney struct {
 	CreditType     string `json:"credit_type" db:"CreditType"`
-	CofirmNo      string `json:"cofirm_no" db:"CofirmNo"`
-	CreditNo    string `json:"credit_no" db:"CreditNo"`
+	CofirmNo       string `json:"cofirm_no" db:"CofirmNo"`
+	CreditNo       string `json:"credit_no" db:"CreditNo"`
 	CreditDueDate  string `json:"credit_due_date" db:"CreditDueDate"`
 	BankCode       string `json:"bank_code" db:"BookCode"`
 	BankBranchCode string `json:"bank_branch_code" db:"BankBranchCode"`
@@ -215,7 +215,7 @@ func (inv *ArInvoice) InsertAndEditArInvoice(db *sqlx.DB) error {
 		inv.TaxRate = def.TaxRateDefault
 	}
 
-	sum_pay_amount = (inv.SumCashAmount + inv.SumCreditAmount + inv.SumChqAmount + inv.SumBankAmount + inv.OtherExpense+ inv.CoupongAmount) - inv.OtherIncome
+	sum_pay_amount = (inv.SumCashAmount + inv.SumCreditAmount + inv.SumChqAmount + inv.SumBankAmount + inv.OtherExpense + inv.CoupongAmount) - inv.OtherIncome
 
 	var AfterDepositAmount float64
 
@@ -391,8 +391,8 @@ func (inv *ArInvoice) InsertAndEditArInvoice(db *sqlx.DB) error {
 				return err
 			}
 		} else {
-			sql := `set dateformat dmy      insert into dbo.bcarinvoice(DocNo,DocDate,TaxNo,ArCode,SaleCode,TaxType,DepartCode,CreditDay,DeliveryDay,DeliveryDate,DueDate,PayBillDate,TaxRate,IsConfirm,MyDescription,BillType,BillGroup,RefDocNo,DeliveryAddr,ContactCode,SumOfItemAmount,DiscountWord,DiscountAmount,AfterDiscount,BeforeTaxAmount,TaxAmount,TotalAmount,ZeroTaxAmount,ExceptTaxAmount,SumCashAmount,SumChqAmount,SumCreditAmount,SumBankAmount,DepositIncTax,SumOfDeposit1,SumOfDeposit2,SumOfWTax,NetDebtAmount,HomeAmount,OtherIncome,OtherExpense,ExcessAmount1,ExcessAmount2,BillBalance,CurrencyCode,ExchangeRate,GLFormat,IsCancel,IsCompleteSave,AllocateCode,ProjectCode,RecurName,IsConditionSend,PayBillAmount,SORefNo,HoldingStatus,PosStatus,CreatorCode,CreateDateTime,ShiftCode,CashierCode,ShiftNo,MachineNo,MachineCode,BillTime,CreditType,CreditDueDate,CreditNo,CofirmNo,CreditBaseAmount,CoupongAmount,ChangeAmount,ChargeAmount,GrandTotal) values(?,?,?,?,?,?,?,?,?,?,?,?,?,0,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,0,1,?,?,?,?,?,?,?,0,?,getdate(),?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`
-			_, err = db.Exec(sql, inv.DocNo, inv.DocDate, inv.TaxNo, inv.ArCode, inv.SaleCode, inv.TaxType, inv.DepartCode, inv.CreditDay, inv.DeliveryDay, inv.DeliveryDate, inv.DueDate, inv.PayBillDate, inv.TaxRate, inv.MyDescription, inv.BillType, inv.BillGroup, inv.RefDocNo, inv.DeliveryAddr, inv.ContactCode, inv.SumOfItemAmount, inv.DiscountWord, inv.DiscountAmount, inv.AfterDiscount, inv.BeforeTaxAmount, inv.TaxAmount, inv.TotalAmount, inv.ZeroTaxAmount, inv.ExceptTaxAmount, inv.SumCashAmount, inv.SumChqAmount, inv.SumCreditAmount, inv.SumBankAmount, inv.DepositIncTax, inv.SumOfDeposit1, inv.SumOfDeposit2, inv.SumOfWTax, inv.NetDebtAmount, inv.HomeAmount, inv.OtherIncome, inv.OtherExpense, inv.ExcessAmount1, inv.ExcessAmount2, inv.BillBalance, inv.CurrencyCode, inv.ExchangeRate, inv.GLFormat, inv.AllocateCode, inv.ProjectCode, inv.RecurName, inv.IsConditionSend, inv.PayBillAmount, inv.SORefNo, inv.HoldingStatus, inv.CreatorCode, inv.ShiftCode, inv.CashierCode, inv.ShiftNo, inv.MachineNo, inv.MachineCode, inv.BillTime, inv.CreditType, inv.CreditDueDate, inv.CreditNo, inv.CofirmNo, inv.CreditBaseAmount, inv.CoupongAmount, inv.ChangeAmount, inv.ChargeAmount, inv.GrandTotal)
+			sql := `set dateformat dmy      update dbo.bcarinvoice set DocDate=?,TaxNo=?,ArCode=?,SaleCode=?,TaxType=?,DepartCode=?,CreditDay=?,DeliveryDay=?,DeliveryDate=?,DueDate=?,PayBillDate=?,TaxRate=?,IsConfirm=?,MyDescription=?,BillType=?,BillGroup=?,RefDocNo=?,DeliveryAddr=?,ContactCode=?,SumOfItemAmount=?,DiscountWord=?,DiscountAmount=?,AfterDiscount=?,BeforeTaxAmount=?,TaxAmount=?,TotalAmount=?,ZeroTaxAmount=?,ExceptTaxAmount=?,SumCashAmount=?,SumChqAmount=?,SumCreditAmount=?,SumBankAmount=?,DepositIncTax=?,SumOfDeposit1=?,SumOfDeposit2=?,SumOfWTax=?,NetDebtAmount=?,HomeAmount=?,OtherIncome=?,OtherExpense=?,ExcessAmount1=?,ExcessAmount2=?,BillBalance=?,CurrencyCode=?,ExchangeRate=?,GLFormat=?,IsCancel=?,AllocateCode=?,ProjectCode=?,RecurName=?,IsConditionSend=?,PayBillAmount=?,SORefNo=?,HoldingStatus=?,PosStatus=?,LastEditorCode=?,LastEditDateT=getdate() where docno = ?`
+			_, err = db.Exec(sql, inv.DocDate, inv.TaxNo, inv.ArCode, inv.SaleCode, inv.TaxType, inv.DepartCode, inv.CreditDay, inv.DeliveryDay, inv.DeliveryDate, inv.DueDate, inv.PayBillDate, inv.TaxRate, inv.IsConfirm, inv.MyDescription, inv.BillType, inv.BillGroup, inv.RefDocNo, inv.DeliveryAddr, inv.ContactCode, inv.SumOfItemAmount, inv.DiscountWord, inv.DiscountAmount, inv.AfterDiscount, inv.BeforeTaxAmount, inv.TaxAmount, inv.TotalAmount, inv.ZeroTaxAmount, inv.ExceptTaxAmount, inv.SumCashAmount, inv.SumChqAmount, inv.SumCreditAmount, inv.SumBankAmount, inv.DepositIncTax, inv.SumOfDeposit1, inv.SumOfDeposit2, inv.SumOfWTax, inv.NetDebtAmount, inv.HomeAmount, inv.OtherIncome, inv.OtherExpense, inv.ExcessAmount1, inv.ExcessAmount2, inv.BillBalance, inv.CurrencyCode, inv.ExchangeRate, inv.GLFormat, inv.IsCancel, inv.AllocateCode, inv.ProjectCode, inv.RecurName, inv.IsConditionSend, inv.PayBillAmount, inv.SORefNo, inv.HoldingStatus, inv.PosStatus, inv.LastEditorCode, inv.DocNo)
 			if err != nil {
 				fmt.Println("Error = ", err.Error())
 				return err
@@ -448,9 +448,9 @@ func (inv *ArInvoice) InsertAndEditArInvoice(db *sqlx.DB) error {
 			return err
 		}
 
-		if (item.StockType != 1){
+		if (item.StockType != 1) {
 			sqlprocess := `set dateformat dmy       insert into dbo.ProcessStock (ItemCode,ProcessFlag,FlowStatus) values(?, 1, 0)`
-			_, err = db.Exec(sqlprocess, item.ItemCode )
+			_, err = db.Exec(sqlprocess, item.ItemCode)
 			fmt.Println("sqlprocess = ", sqlsub)
 			if err != nil {
 				fmt.Println("Error = ", err.Error())
@@ -649,6 +649,97 @@ func (inv *ArInvoice) InsertAndEditArInvoice(db *sqlx.DB) error {
 				}
 			}
 		}
+	}
+
+	return nil
+}
+
+func (inv *ArInvoice) CancelArInvoice(db *sqlx.DB) error {
+	var check_exist int
+
+	sqlexist := `select count(docno) as check_exist from dbo.bcarinvoice where docno = ?`
+	err := db.Get(&check_exist, sqlexist, inv.DocNo)
+	if err != nil {
+		fmt.Println("Error = ", err.Error())
+		return nil
+	}
+
+	fmt.Println("check_exist = ", check_exist)
+	if (check_exist != 0) {
+		//Update/////////////////////////////////////////////////////////////////////////////////////////////////////////
+		inv.CancelCode = inv.UserCode
+		inv.IsCancel = 1
+
+		sql := `set dateformat dmy      update dbo.bcarinvoice set IsCancel = 1,CancelCode=?,CancelDateTime=getdate() where docno = ?`
+		_, err = db.Exec(sql, inv.CancelCode, inv.DocNo)
+		if err != nil {
+			fmt.Println("Error = ", err.Error())
+			return err
+		}
+
+		sql_del_sub := `update dbo.bcarinvoicesub set iscancel = 1 where docno = ?`
+		_, err = db.Exec(sql_del_sub, inv.DocNo)
+		if err != nil {
+			fmt.Println("Error = ", err.Error())
+			return err
+		}
+
+		sql_update_so := `set dateformat dmy     update dbo.bcsaleordersub set remainqty = remainqty+b.qty from dbo.bcsaleordersub a inner join dbo.bcarinvoicesub b on a.docno = b.sorefno  and a.itemcode = b.itemcode and a.linenumber = b.reflinenumber  where b.docno = ?`
+		_, err = db.Exec(sql_update_so, inv.DocNo)
+		if err != nil {
+			fmt.Println("Error = ", err.Error())
+			fmt.Println(err.Error())
+		}
+
+		sql_update_so_status := `set dateformat dmy     update dbo.bcsaleorder set billstatus = case when b.sumremainqty= 0 then 1 else 2 end from dbo.bcsaleorder a inner join (select docno,docdate,sum(remainqty) as sumremainqty from dbo.bcsaleordersub where iscancel = 0 group by docno,docdate) b on a.docno = b.docno and a.docdate = b.docdate inner join (select distinct docno,sorefno from dbo.bcarinvoicesub where docno = ?) c on b.docno = c.sorefno   where c.docno = ?`
+		_, err = db.Exec(sql_update_so_status, inv.DocNo, inv.DocNo)
+		if err != nil {
+			fmt.Println("Error = ", err.Error())
+			fmt.Println(err.Error())
+		}
+
+
+		sqlprocess := `set dateformat dmy       insert into dbo.ProcessStock (ItemCode,ProcessFlag,FlowStatus) select itemcode, 1 as ProcessFlag, 0 as FlowStatus from dbo.bcarinvoicesub where docno = ?`
+		_, err = db.Exec(sqlprocess, inv.DocNo)
+		if err != nil {
+			fmt.Println("Error = ", err.Error())
+			fmt.Println(err.Error())
+		}
+
+		sqldel := `delete dbo.BCOutputTax where docno = ?`
+		_, err = db.Exec(sqldel, inv.DocNo)
+		if err != nil {
+			fmt.Println("Error = ", err.Error())
+			return err
+		}
+
+		sqlrecdel := `delete dbo.BCRecMoney where docno = ?`
+		_, err = db.Exec(sqlrecdel, inv.DocNo)
+		if err != nil {
+			fmt.Println("Error = ", err.Error())
+			return err
+		}
+
+		sqldepdel := `delete dbo.BCArDepositUse where docno = ?`
+		_, err = db.Exec(sqldepdel, inv.DocNo)
+		if err != nil {
+			return err
+		}
+
+		sqlchqdel := `delete dbo.BCChqIn where docno = ?`
+		_, err = db.Exec(sqlchqdel, inv.DocNo)
+		if err != nil {
+			fmt.Println("Error = ", err.Error())
+			return err
+		}
+
+		sqlcrddel := `delete dbo.BCCreditCard where docno = ?`
+		_, err = db.Exec(sqlcrddel, inv.DocNo)
+		if err != nil {
+			fmt.Println("Error = ", err.Error())
+			return err
+		}
+
 	}
 
 	return nil
