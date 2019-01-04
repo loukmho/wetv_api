@@ -253,11 +253,7 @@ func (apv *ApInvoice) InsertAndEditApInvoice(db *sqlx.DB) error {
 		}
 	}
 
-	//if (apv.SumOfDeposit1 != 0) {
 	apv.DepositIncTax = 1
-	//} else {
-	//	apv.DepositIncTax = 0
-	//}
 
 	if apv.ExchangeRate == 0 {
 		apv.ExchangeRate = def.ExchangeRateDefault
@@ -551,18 +547,83 @@ func (apv *ApInvoice) InsertAndEditApInvoice(db *sqlx.DB) error {
 	return nil
 }
 
-//
-//func (ai *ApInvoice) SearchApInvoiceByDocNo(db *sqlx.DB) error {
-//	sql := `select a.DocNo,isnull(a.TaxNo,'') as TaxNo,DocDate,a.TaxType,isnull(ApCode,'') as ApCode,isnull(DepartCode,'') as DepartCode,a.CreditDay,isnull(DueDate,'') as DueDate,isnull(StatementDate,'') as StatementDate,TaxRate,IsConfirm,isnull(MyDescription,'') as MyDescription,BillType,isnull(BillGroup,'') as BillGroup,isnull(ContactCode,'') as ContactCode,SumOfItemAmount,isnull(DiscountWord,'') as DiscountWord,DiscountAmount,AfterDiscount,BeforeTaxAmount,TaxAmount,TotalAmount,ExceptTaxAmount,ZeroTaxAmount,PettyCashAmount,SumCashAmount,SumChqAmount,SumBankAmount,DepositIncTax,SumOfDeposit1,SumOfDeposit2,SumOfWTax,NetDebtAmount,HomeAmount,OtherIncome,OtherExpense,ExcessAmount1,ExcessAmount2,BillBalance,isnull(CurrencyCode,'') as CurrencyCode,ExchangeRate,isnull(GLFormat,'') as GLFormat,GLStartPosting,GRBillStatus,GRIRBillStatus,IsCancel,IsCreditNote,IsDebitNote,IsCompleteSave,isnull(AllocateCode,'') as AllocateCode,isnull(ProjectCode,'') as ProjectCode,isnull(RecurName,'') as RecurName,ExchangeProfit,isnull(a.ConfirmCode,'') as ConfirmCode,isnull(a.ConfirmDateTime,'') as ConfirmDateTime,isnull(a.CancelCode,'') as CancelCode,isnull(a.CancelDateTime,'') as CancelDateTime,PayBillAmount,isnull(RefDocNo,'') as RefDocNo,isnull(a.CreatorCode,'') as CreatorCode,isnull(a.CreateDateTime,'') as CreateDateTime,isnull(a.LastEditorCode,'') as LastEditorCode,isnull(a.LastEditDateT,'') as LastEditDateT from dbo.bcapinvoice a left join dbo.bcap b with (nolock) on a.apcode = b.code`
-//	//sql := `DocNo, TaxNo, DocDate, TaxType, ApCode, DepartCode, CreditDay, DueDate, StatementDate, TaxRate, IsConfirm, MyDescription, BillType, BillGroup, ContactCode, SumOfItemAmount,DiscountWord, DiscountAmount, AfterDiscount, BeforeTaxAmount, TaxAmount, TotalAmount, DiscountCase, ExceptTaxAmount, ZeroTaxAmount, PettyCashAmount, SumCashAmount, SumChqAmount, SumBankAmount,DepositIncTax, SumOfDeposit1, SumOfDeposit2, SumOfWTax, NetDebtAmount, HomeAmount, OtherIncome, OtherExpense, ExcessAmount1, ExcessAmount2, BillBalance, CurrencyCode, ExchangeRate, GLFormat,GLStartPosting, GRBillStatus, GRIRBillStatus, IsCancel, IsCreditNote, IsDebitNote,  IsCompleteSave,  AllocateCode, ProjectCode, RecurName, ExchangeProfit, ConfirmCode,ConfirmDateTime, CancelCode, CancelDateTime, PayBillAmount, RefDocNo,CreatorCode, CreateDateTime, LastEditorCode, LastEditDateT`
-//	//sqlsub := ` MyType, DocNo, TaxNo, TaxType, ItemCode, DocDate, ApCode, DepartCode, MyDescription, ItemName, WHCode, ShelfCode, CNQty, GRRemainQty, Qty, Price, DiscountWord, DiscountAmount, Amount, NetAmount, HomeAmount, BalanceAmount, SumOfExpCost, UnitCode, PORefNo, IRRefNo, IsCancel, LineNumber, BarCode, PORefLinenum,  AVERAGECOST,  LotNumber, SumOfCost, TaxRate, PackingRate1, PackingRate2`
-//	////err := db.Query(ai, sql)
-//	//fmt.Println("sql =", sql)
-//	//if err != nil {
-//	//	return err
-//	//}
-//	return nil
-//}
+func (apv *ApInvoice) CancelApInvoice(db *sqlx.DB) error {
+	var check_exist int
+
+	apv.IsCancel = 1
+
+	sqlexist := `select count(docno) as check_exist from dbo.bcapinvoice where docno = ?`
+	err := db.Get(&check_exist, sqlexist, apv.DocNo)
+	if err != nil {
+		fmt.Println(err.Error())
+		return nil
+	}
+
+	fmt.Println("check_exist = ", check_exist)
+	if (check_exist != 0) {
+		//Cancel/////////////////////////////////////////////////////////////////////////////////////////////////////////
+		apv.CancelCode = apv.UserCode
+		sql := `set dateformat dmy      update dbo.bcapinvoice set IsCancel=1,CancelCode=?,CancelDateTime=getdate() where docno = ?`
+		_, err = db.Exec(sql, apv.IsCancel, apv.CancelCode, apv.DocNo)
+		if err != nil {
+			fmt.Println("sql update= ", err.Error())
+			return err
+		}
+
+		sql_del_sub := `update dbo.bcapinvoicesub set iscancel = 1 where docno = ?`
+		_, err = db.Exec(sql_del_sub, apv.DocNo)
+		if err != nil {
+			return err
+		}
+
+		sql_update_so := `set dateformat dmy     update dbo.bcpurchaseordersub set remainqty = remainqty+b.qty from dbo.bcpurchaseordersub a inner join dbo.bcapinvoicesub b on a.docno = b.porefno  and a.itemcode = b.itemcode and a.linenumber = b.poreflinenum  where b.docno = ?`
+		_, err = db.Exec(sql_update_so, apv.DocNo)
+		if err != nil {
+			fmt.Println("Error = ", err.Error())
+			fmt.Println(err.Error())
+		}
+
+		sql_update_so_status := `set dateformat dmy     update dbo.bcpurchaseorder set billstatus = case when b.sumremainqty= 0 then 1 else 2 end from dbo.bcpurchaseorder a inner join (select docno,docdate,sum(remainqty) as sumremainqty from dbo.bcpurchaseordersub where iscancel = 0 group by docno,docdate) b on a.docno = b.docno and a.docdate = b.docdate inner join (select distinct docno,porefno from dbo.bcapinvoicesub where docno = ?) c on b.docno = c.porefno   where c.docno = ?`
+		_, err = db.Exec(sql_update_so_status, apv.DocNo, apv.DocNo)
+		if err != nil {
+			fmt.Println("Error = ", err.Error())
+			fmt.Println(err.Error())
+		}
+
+		sqlprocess := `set dateformat dmy       insert into dbo.ProcessStock (ItemCode,ProcessFlag,FlowStatus) select itemcode,1 as ProcessFlag,0 as FlowStatusfrom dbo.bcapinoicesub where docno = ?`
+		_, err = db.Exec(sqlprocess, apv.DocNo)
+		if err != nil {
+			fmt.Println(err.Error())
+		}
+
+		sqldel := `delete dbo.BCInputTax where docno = ?`
+		_, err = db.Exec(sqldel, apv.DocNo)
+		if err != nil {
+			return err
+		}
+
+		sqlrecdel := `delete dbo.BCPayMoney where docno = ?`
+		_, err = db.Exec(sqlrecdel, apv.DocNo)
+		if err != nil {
+			return err
+		}
+
+		sqldepdel := `delete dbo.BCApDepositUse where docno = ?`
+		_, err = db.Exec(sqldepdel, apv.DocNo)
+		if err != nil {
+			return err
+		}
+
+		sqlchqdel := `delete dbo.BCChqOut where docno = ?`
+		_, err = db.Exec(sqlchqdel, apv.DocNo)
+		if err != nil {
+			return err
+		}
+
+	}
+
+	return nil
+}
 
 func (inv *ApInvoice) SearchApInvoiceByDocNo(db *sqlx.DB, docno string) error {
 	sql := `set dateformat dmy     select DocNo,isnull(a.TaxNo,'') as TaxNo,DocDate,a.TaxType,isnull(ApCode,'') as ApCode,isnull(DepartCode,'') as DepartCode,a.CreditDay,isnull(DueDate,'') as DueDate,isnull(StatementDate,'') as StatementDate,TaxRate,IsConfirm,isnull(MyDescription,'') as MyDescription,BillType,isnull(BillGroup,'') as BillGroup,isnull(ContactCode,'') as ContactCode,SumOfItemAmount,isnull(DiscountWord,'') as DiscountWord,DiscountAmount,AfterDiscount,BeforeTaxAmount,TaxAmount,TotalAmount,ExceptTaxAmount,ZeroTaxAmount,PettyCashAmount,SumCashAmount,SumChqAmount,SumBankAmount,DepositIncTax,SumOfDeposit1,SumOfDeposit2,SumOfWTax,NetDebtAmount,HomeAmount,OtherIncome,OtherExpense,ExcessAmount1,ExcessAmount2,BillBalance,isnull(CurrencyCode,'') as CurrencyCode,ExchangeRate,isnull(GLFormat,'') as GLFormat,GLStartPosting,GRBillStatus,GRIRBillStatus,IsCancel,IsCreditNote,IsDebitNote,IsCompleteSave,isnull(AllocateCode,'') as AllocateCode,isnull(ProjectCode,'') as ProjectCode,isnull(RecurName,'') as RecurName,ExchangeProfit,isnull(a.ConfirmCode,'') as ConfirmCode,isnull(a.ConfirmDateTime,'') as ConfirmDateTime,isnull(a.CancelCode,'') as CancelCode,isnull(a.CancelDateTime,'') as CancelDateTime,PayBillAmount,isnull(RefDocNo,'') as RefDocNo,isnull(a.CreatorCode,'') as CreatorCode,isnull(a.CreateDateTime,'') as CreateDateTime,isnull(a.LastEditorCode,'') as LastEditorCode,isnull(a.LastEditDateT,'') as LastEditDateT from dbo.bcapinvoice a  with (nolock) left join dbo.bcap b with (nolock) on a.apcode = b.code where docno = ? `

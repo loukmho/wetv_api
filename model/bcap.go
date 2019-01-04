@@ -89,10 +89,38 @@ func (vnd *Vendor) InsertAndEditVendor(db *sqlx.DB) error {
 		sql := `Insert into dbo.bcap(Code, Name1, Name2, DefDeliveryAddr, DefContactCode, Address, Telephone, Fax, AccountCode, IDCardNo, BankAccNo, CreditDay, LeadTime, DefaultTaxRate, TaxNo, PicFileName, TypeCode, EmailAddress, GroupCode, GroupOfDebt, PersonType, ActiveStatus, CreatorCode, CreateDateTime) values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, getdate())`
 		_, err = db.Exec(sql, vnd.Code, vnd.Name1, vnd.Name2, vnd.DefDeliveryAddr, vnd.DefContactCode, vnd.Address, vnd.Telephone, vnd.Fax, vnd.AccountCode, vnd.IDCardNo, vnd.BankAccNo, vnd.CreditDay, vnd.LeadTime, vnd.DefaultTaxRate, vnd.TaxNo, vnd.PicFileName, vnd.TypeCode, vnd.EmailAddress, vnd.GroupCode, vnd.GroupOfDebt, vnd.PersonType, vnd.ActiveStatus, vnd.CreatorCode)
 	} else {
+		vnd.ActiveStatus = 1
 		vnd.LastEditorCode = vnd.UserCode
 
 		sql := `Update dbo.bcap set Name1=?, Name2=?, DefDeliveryAddr=?, DefContactCode=?, Address=?, Telephone=?, Fax=?, AccountCode=?, IDCardNo=?, BankAccNo=?, CreditDay=?, LeadTime=?, DefaultTaxRate=?, TaxNo=?, PicFileName=?, TypeCode=?, EmailAddress=?, GroupCode=?, GroupOfDebt=?, PersonType=?, ActiveStatus=?, LastEditorCode=?, LastEditDateT = getdate() where code = ?`
 		_, err = db.Exec(sql, vnd.Name1, vnd.Name2, vnd.DefDeliveryAddr, vnd.DefContactCode, vnd.Address, vnd.Telephone, vnd.Fax, vnd.AccountCode, vnd.IDCardNo, vnd.BankAccNo, vnd.CreditDay, vnd.LeadTime, vnd.DefaultTaxRate, vnd.TaxNo, vnd.PicFileName, vnd.TypeCode, vnd.EmailAddress, vnd.GroupCode, vnd.GroupOfDebt, vnd.PersonType, vnd.ActiveStatus, vnd.LastEditorCode, vnd.Code)
+	}
+	if err != nil {
+		fmt.Println("error = ", err.Error())
+		return err
+	}
+
+	return nil
+}
+
+
+func (vnd *Vendor) CancelVendor(db *sqlx.DB) error {
+	var check_exist int
+
+	sqlexist := `select count(code) as check_exist from dbo.bcap where code = ?`
+	err := db.Get(&check_exist, sqlexist, vnd.Code)
+	if err != nil {
+		fmt.Println(err.Error())
+		return nil
+	}
+
+
+	if (check_exist != 0) {
+		vnd.ActiveStatus = 0
+		vnd.LastEditorCode = vnd.UserCode
+
+		sql := `Update dbo.bcap set  ActiveStatus=0, LastEditorCode=?, LastEditDateT = getdate() where code = ?`
+		_, err = db.Exec(sql, vnd.LastEditorCode, vnd.Code)
 	}
 	if err != nil {
 		fmt.Println("error = ", err.Error())

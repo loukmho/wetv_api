@@ -89,12 +89,38 @@ func (ctm *Customer) InsertAndEditCustomer(db *sqlx.DB) error {
 
 	if (check_exist == 0) {
 		ctm.ActiveStatus = 1
+		ctm.CreatorCode = ctm.UserCode
 
 		sql := `Insert into dbo.bcar(Code,Name1,Name2,BillAddress,WorkAddress,Telephone,Fax,AccountCode,IDCardNo,SaleCode,CreditStatus,DebtLimit1,DebtLimit2,DebtLimitBal,TaxType,TaxNo,PicFileName,TypeCode,GroupCode,EmailAddress,GroupOfDebt,PersonType,BirthDay,CustAge,CustStatus,CustCreditType,DepartCode,MEMBERID,CreatorCode,CreateDateTime,ActiveStatus) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,getdate(),?)`
 		_, err = db.Exec(sql, ctm.Code, ctm.Name1, ctm.Name2, ctm.BillAddress, ctm.WorkAddress, ctm.Telephone, ctm.Fax, ctm.AccountCode, ctm.IDCardNo, ctm.SaleCode, ctm.CreditStatus, ctm.DebtLimit1, ctm.DebtLimit2, ctm.DebtLimitBal, ctm.TaxType, ctm.TaxNo, ctm.PicFileName, ctm.TypeCode, ctm.GroupCode, ctm.EmailAddress, ctm.GroupOfDebt, ctm.PersonType, ctm.BirthDay, ctm.CustAge, ctm.CustStatus, ctm.CustCreditType, ctm.DepartCode, ctm.MEMBERID, ctm.CreatorCode, ctm.ActiveStatus)
 	} else {
+		ctm.ActiveStatus = 1
+		ctm.LastEditorCode = ctm.UserCode
 		sql := `Update dbo.bcar set Name1=?,Name2=?,BillAddress=?,WorkAddress=?,Telephone=?,Fax=?,AccountCode=?,IDCardNo=?,SaleCode=?,CreditStatus=?,DebtLimit1=?,DebtLimit2=?,DebtLimitBal=?,TaxType=?,TaxNo=?,PicFileName=?,TypeCode=?,GroupCode=?,EmailAddress=?,GroupOfDebt=?,PersonType=?,BirthDay=?,CustAge=?,CustStatus=?,CustCreditType=?,DepartCode=?,MEMBERID=?,LastEditorCode=?,LastEditDateT=getdate(),ActiveStatus=? where code = ?`
-		_, err = db.Exec(sql, ctm.Name1, ctm.Name2, ctm.BillAddress, ctm.WorkAddress, ctm.Telephone, ctm.Fax, ctm.AccountCode, ctm.IDCardNo, ctm.SaleCode, ctm.CreditStatus, ctm.DebtLimit1, ctm.DebtLimit2, ctm.DebtLimitBal, ctm.TaxType, ctm.TaxNo, ctm.PicFileName, ctm.TypeCode, ctm.GroupCode, ctm.EmailAddress, ctm.GroupOfDebt, ctm.PersonType, ctm.BirthDay, ctm.CustAge, ctm.CustStatus, ctm.CustCreditType, ctm.DepartCode, ctm.MEMBERID, ctm.CreatorCode, ctm.ActiveStatus, ctm.Code)
+		_, err = db.Exec(sql, ctm.Name1, ctm.Name2, ctm.BillAddress, ctm.WorkAddress, ctm.Telephone, ctm.Fax, ctm.AccountCode, ctm.IDCardNo, ctm.SaleCode, ctm.CreditStatus, ctm.DebtLimit1, ctm.DebtLimit2, ctm.DebtLimitBal, ctm.TaxType, ctm.TaxNo, ctm.PicFileName, ctm.TypeCode, ctm.GroupCode, ctm.EmailAddress, ctm.GroupOfDebt, ctm.PersonType, ctm.BirthDay, ctm.CustAge, ctm.CustStatus, ctm.CustCreditType, ctm.DepartCode, ctm.MEMBERID, ctm.LastEditorCode, ctm.ActiveStatus, ctm.Code)
+	}
+	if err != nil {
+		fmt.Println("error = ", err.Error())
+		return err
+	}
+
+	return nil
+}
+
+func (ctm *Customer) CancelCustomer(db *sqlx.DB) error {
+	var check_exist int
+
+	sqlexist := `select count(code) as check_exist from dbo.bcar where code = ?`
+	err := db.Get(&check_exist, sqlexist, ctm.Code)
+	if err != nil {
+		fmt.Println(err.Error())
+		return nil
+	}
+
+	if (check_exist != 0) {
+		ctm.LastEditorCode = ctm.UserCode
+		sql := `Update dbo.bcar set LastEditorCode=?,LastEditDateT=getdate(),ActiveStatus=0 where code = ?`
+		_, err = db.Exec(sql, ctm.LastEditorCode, ctm.Code)
 	}
 	if err != nil {
 		fmt.Println("error = ", err.Error())

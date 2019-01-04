@@ -3,9 +3,41 @@ package main
 import (
 	"github.com/gin-gonic/gin"
 	we "github.com/loukmho/wetv_api/ctrl"
+	"runtime"
+	"fmt"
+	"os"
 )
 
 func main() {
+
+	var check_file bool
+	var err error
+
+	if runtime.GOOS == "windows" {
+		fmt.Println("Windows OS detected")
+
+		check_file, err = exists("c:/app/vtew.txt")
+		if err != nil {
+			fmt.Println(err.Error())
+		}
+	}
+
+	if runtime.GOOS == "linux" { // also can be specified to FreeBSD
+		fmt.Println("Unix/Linux type OS detected")
+
+		check_file, err = exists("/app/vtew.txt")
+		if err != nil {
+			fmt.Println(err.Error())
+		}
+	}
+	//
+	//check_file, err := exists("/app/vtew.txt")
+	//if err != nil {
+	//	fmt.Println(err.Error())
+	//}
+
+	fmt.Println("check_file = ", check_file)
+
 	r := gin.New()
 
 	//Module Buy ///////////////////////////////////////////////////////////////////
@@ -17,6 +49,7 @@ func main() {
 	r.GET("/apinvoice", we.SearchApInvoiceByDocNo)
 	r.GET("/apinvoices", we.SearchApInvoiceByKeyword)
 	r.POST("/apinvoice", we.InsertAndEditApinvoice)
+	r.POST("/apinvoice/cancel", we.CancelApinvoice)
 
 	r.GET("/payment", we.SearchPaymentByDocNo)
 	r.GET("/payments", we.SearchPaymentByKeyword)
@@ -46,6 +79,19 @@ func main() {
 	r.GET("/issues", we.SearchStkIssueByKeyword)
 	r.POST("/issue", we.InsertAndEditStkIssue)
 
+	if check_file == true {
+		r.Run(":9998")
+	}
 
-	r.Run(":8003")
+}
+
+func exists(path string) (bool, error) {
+	_, err := os.Stat(path)
+	if err == nil {
+		return true, nil
+	}
+	if os.IsNotExist(err) {
+		return false, nil
+	}
+	return true, err
 }

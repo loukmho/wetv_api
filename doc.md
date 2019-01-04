@@ -1,10 +1,6 @@
 # Standard API Document
 
-## Table BCItem
 
-### API Name
-
-##### Table BCAr (ทะเบียนลูกค้า)
 
 ###### API Name
 
@@ -1576,7 +1572,8 @@
 
 ######API Name
 
-- ค้นหาเอกสารจ่ายชำระโดยค้นหาจาก เลขที่เอกสาร
+- ค้นหาเอกสารเบิกสินค้าโดยค้นหาจาก เลขที่เอกสาร
 - GET 
    - http://localhost:8001/stkissue?docno=S01-PX6112-0030
    - response
+

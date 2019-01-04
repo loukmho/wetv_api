@@ -2,30 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c2047e8d-ae07-4000-b98f-27b28412bf8f" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/config.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/config.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ctrl/bcap.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ctrl/bcpayment.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/model/bcpayment.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/model/bcreceipt1.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/model/services.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ctrl/bccreditnote.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/model/bccreditnote.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/model/bcsaleorder.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ctrl/apinvoice.go" beforeDir="false" afterPath="$PROJECT_DIR$/ctrl/bcapinvoice.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ctrl/arinvoice.go" beforeDir="false" afterPath="$PROJECT_DIR$/ctrl/bcarinvoice.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ctrl/customer.go" beforeDir="false" afterPath="$PROJECT_DIR$/ctrl/bcar.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ctrl/init.go" beforeDir="false" afterPath="$PROJECT_DIR$/ctrl/init.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ctrl/item.go" beforeDir="false" afterPath="$PROJECT_DIR$/ctrl/bcitem.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ctrl/receipt1.go" beforeDir="false" afterPath="$PROJECT_DIR$/ctrl/bcreceipt1.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ctrl/stkissue.go" beforeDir="false" afterPath="$PROJECT_DIR$/ctrl/bcstkissue.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/doc.md" beforeDir="false" afterPath="$PROJECT_DIR$/doc.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ctrl/bcapinvoice.go" beforeDir="false" afterPath="$PROJECT_DIR$/ctrl/bcapinvoice.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/model/bcap.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/bcap.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/model/bcapinvoice.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/bcapinvoice.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/model/bcar.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/bcar.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/model/bcarinvoice.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/bcarinvoice.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/model/bcitem.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/bcitem.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/bcstkissue.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/bcstkissue.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/bcstktransfer.go" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -37,50 +24,101 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="main.go" pinned="false" current-in-tab="true">
+      <file leaf-file-name="main.go" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="257">
-              <caret line="49" column="16" selection-start-line="49" selection-start-column="16" selection-end-line="49" selection-end-column="16" />
+            <state relative-caret-position="405">
+              <caret line="33" column="48" selection-start-line="33" selection-start-column="48" selection-end-line="33" selection-end-column="48" />
+              <folding>
+                <element signature="e#14#115#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="bcpayment.go" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/model/bcpayment.go">
+      <file leaf-file-name="bcarinvoice.go" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ctrl/bcarinvoice.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="6315">
-              <caret line="425" column="27" selection-start-line="425" selection-start-column="27" selection-end-line="425" selection-end-column="27" />
+            <state relative-caret-position="450">
+              <caret line="35" column="26" selection-start-line="35" selection-start-column="26" selection-end-line="35" selection-end-column="26" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="doc.md" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/doc.md">
-          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-            <state split_layout="SPLIT">
-              <first_editor relative-caret-position="300">
-                <caret line="1581" column="13" selection-start-line="1581" selection-start-column="13" selection-end-line="1581" selection-end-column="13" />
-                <folding>
-                  <element signature="e#49#64#0" />
-                  <element signature="e#3798#3820#0" />
-                  <element signature="e#16245#16266#0" />
-                  <element signature="e#23534#23551#0" />
-                  <element signature="e#27381#27396#0" />
-                  <element signature="e#30162#30184#0" />
-                  <element signature="e#39210#39230#0" />
-                </folding>
-              </first_editor>
-              <second_editor />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="bcstkissue.go" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/model/bcstkissue.go">
+      <file leaf-file-name="bcar.go" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ctrl/bcar.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="57" column="58" lean-forward="true" selection-start-line="57" selection-start-column="58" selection-end-line="57" selection-end-column="58" />
+            <state relative-caret-position="150">
+              <caret line="15" column="28" selection-start-line="15" selection-start-column="28" selection-end-line="15" selection-end-column="28" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="bcarinvoice.go" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/model/bcarinvoice.go">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="10215">
+              <caret line="686" selection-start-line="686" selection-end-line="698" selection-end-column="9" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="bccreditnote.go" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/model/bccreditnote.go">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="15">
+              <caret line="408" column="23" selection-start-line="408" selection-start-column="23" selection-end-line="408" selection-end-column="23" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="bcar.go" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/model/bcar.go">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1725">
+              <caret line="119" column="24" selection-start-line="119" selection-start-column="24" selection-end-line="119" selection-end-column="24" />
+              <folding>
+                <element signature="e#15#69#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="bcap.go" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ctrl/bcap.go">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="660">
+              <caret line="49" selection-start-line="49" selection-end-line="70" selection-end-column="1" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="bcap.go" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/model/bcap.go">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1305">
+              <caret line="91" column="28" selection-start-line="91" selection-start-column="28" selection-end-line="91" selection-end-column="28" />
+              <folding>
+                <element signature="e#15#69#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="bcapinvoice.go" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/model/bcapinvoice.go">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="8880">
+              <caret line="597" selection-start-line="597" selection-end-line="597" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="bcapinvoice.go" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ctrl/bcapinvoice.go">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="435">
+              <caret line="34" column="29" selection-start-line="34" selection-start-column="29" selection-end-line="34" selection-end-column="29" />
             </state>
           </provider>
         </entry>
@@ -97,6 +135,8 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>m.</find>
+      <find>DefFixUnitCode</find>
+      <find>proce</find>
     </findStrings>
   </component>
   <component name="GOROOT" path="/usr/local/go" />
@@ -114,22 +154,24 @@
         <option value="$PROJECT_DIR$/ctrl/bcreceipt1.go" />
         <option value="$PROJECT_DIR$/ctrl/bcstkissue.go" />
         <option value="$PROJECT_DIR$/ctrl/bcap.go" />
-        <option value="$PROJECT_DIR$/ctrl/bcapinvoice.go" />
         <option value="$PROJECT_DIR$/ctrl/init.go" />
         <option value="$PROJECT_DIR$/model/services.go" />
-        <option value="$PROJECT_DIR$/model/bcapinvoice.go" />
-        <option value="$PROJECT_DIR$/model/bcarinvoice.go" />
         <option value="$PROJECT_DIR$/ctrl/bcpayment.go" />
         <option value="$PROJECT_DIR$/ctrl/bcitem.go" />
         <option value="$PROJECT_DIR$/config.json" />
-        <option value="$PROJECT_DIR$/model/bcar.go" />
-        <option value="$PROJECT_DIR$/model/bcitem.go" />
         <option value="$PROJECT_DIR$/model/bcreceipt1.go" />
-        <option value="$PROJECT_DIR$/model/bcap.go" />
         <option value="$PROJECT_DIR$/model/bcpayment.go" />
-        <option value="$PROJECT_DIR$/doc.md" />
         <option value="$PROJECT_DIR$/model/bcstkissue.go" />
+        <option value="$PROJECT_DIR$/doc.md" />
+        <option value="$PROJECT_DIR$/model/bcitem.go" />
+        <option value="$PROJECT_DIR$/model/bcsaleorder.go" />
+        <option value="$PROJECT_DIR$/ctrl/bcapinvoice.go" />
         <option value="$PROJECT_DIR$/main.go" />
+        <option value="$PROJECT_DIR$/model/bcar.go" />
+        <option value="$PROJECT_DIR$/model/bcarinvoice.go" />
+        <option value="$PROJECT_DIR$/model/bcap.go" />
+        <option value="$PROJECT_DIR$/model/bcapinvoice.go" />
+        <option value="$PROJECT_DIR$/model/bccreditnote.go" />
       </list>
     </option>
   </component>
@@ -154,6 +196,9 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
+      <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -170,9 +215,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
-      <pane id="AndroidView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -185,10 +227,13 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/ctrl" />
       <recent name="$PROJECT_DIR$/model" />
+      <recent name="$PROJECT_DIR$/ctrl" />
       <recent name="$PROJECT_DIR$/config" />
       <recent name="$PROJECT_DIR$" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/ctrl" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -338,16 +383,83 @@
       <workItem from="1544514774073" duration="1703000" />
       <workItem from="1544518268148" duration="2047000" />
       <workItem from="1544520348411" duration="1153000" />
-      <workItem from="1544521694445" duration="337000" />
+      <workItem from="1544521694445" duration="1058000" />
+      <workItem from="1544565572133" duration="1622000" />
+      <workItem from="1544580232779" duration="604000" />
+      <workItem from="1544582916982" duration="599000" />
+      <workItem from="1544584937397" duration="1688000" />
+      <workItem from="1544586744890" duration="56000" />
+      <workItem from="1544685026122" duration="1478000" />
+      <workItem from="1544686679372" duration="1777000" />
+      <workItem from="1544688488156" duration="1785000" />
+      <workItem from="1544690364385" duration="1591000" />
+      <workItem from="1544692174504" duration="800000" />
+      <workItem from="1544694630989" duration="530000" />
+      <workItem from="1544770507912" duration="880000" />
+      <workItem from="1544771422581" duration="1506000" />
+      <workItem from="1544773228519" duration="1777000" />
+      <workItem from="1544775039860" duration="1459000" />
+      <workItem from="1544777710260" duration="1417000" />
+      <workItem from="1545010668272" duration="1076000" />
+      <workItem from="1545031451182" duration="599000" />
+      <workItem from="1545035196111" duration="5000" />
+      <workItem from="1545281416907" duration="1388000" />
+      <workItem from="1545283449814" duration="1776000" />
+      <workItem from="1545285257844" duration="1212000" />
+      <workItem from="1545287647758" duration="602000" />
+      <workItem from="1545290078320" duration="599000" />
+      <workItem from="1545291876409" duration="1264000" />
+      <workItem from="1545293688394" duration="1774000" />
+      <workItem from="1545295867626" duration="615000" />
+      <workItem from="1545297246120" duration="28000" />
+      <workItem from="1545297289442" duration="353000" />
+      <workItem from="1545297677613" duration="1681000" />
+      <workItem from="1545299800337" duration="611000" />
+      <workItem from="1545376818980" duration="1281000" />
+      <workItem from="1545378143796" duration="1351000" />
+      <workItem from="1545379950709" duration="1257000" />
+      <workItem from="1545382352934" duration="1770000" />
+      <workItem from="1545384166566" duration="1831000" />
+      <workItem from="1545386042372" duration="601000" />
+      <workItem from="1545454838459" duration="702000" />
+      <workItem from="1545616245414" duration="599000" />
+      <workItem from="1545620310152" duration="1209000" />
+      <workItem from="1545622283600" duration="727000" />
+      <workItem from="1545624651462" duration="1363000" />
+      <workItem from="1545626457435" duration="635000" />
+      <workItem from="1545628378043" duration="599000" />
+      <workItem from="1545630179291" duration="1198000" />
+      <workItem from="1545640311559" duration="790000" />
+      <workItem from="1545642828801" duration="596000" />
+      <workItem from="1545644654304" duration="599000" />
+      <workItem from="1545701251907" duration="1207000" />
+      <workItem from="1545704049454" duration="711000" />
+      <workItem from="1545705860454" duration="607000" />
+      <workItem from="1545707711719" duration="658000" />
+      <workItem from="1545717052153" duration="611000" />
+      <workItem from="1545720220879" duration="1176000" />
+      <workItem from="1545722044210" duration="610000" />
+      <workItem from="1545731642067" duration="373000" />
+      <workItem from="1545799097143" duration="1346000" />
+      <workItem from="1545800809009" duration="1778000" />
+      <workItem from="1545802623843" duration="848000" />
+      <workItem from="1545807797159" duration="1841000" />
+      <workItem from="1545812550283" duration="751000" />
+      <workItem from="1545814367046" duration="693000" />
+      <workItem from="1545816173068" duration="10000" />
+      <workItem from="1545874362418" duration="673000" />
+      <workItem from="1545876173105" duration="599000" />
+      <workItem from="1545877981903" duration="666000" />
+      <workItem from="1545879796120" duration="599000" />
+      <workItem from="1546564513494" duration="599000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="71427000" />
+    <option name="totallyTimeSpent" value="138764000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="355" y="1069" width="1303" height="780" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -357,19 +469,19 @@
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
       <window_info anchor="right" id="Maven Projects" order="3" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.349454" />
       <window_info anchor="bottom" id="Version Control" order="7" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.349454" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.36349455" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="2" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.22709164" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.33386454" />
       <window_info anchor="right" id="Database" order="3" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="UI Designer" order="2" />
       <window_info anchor="right" id="Theme Preview" order="3" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -386,31 +498,22 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="2" />
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
+          <url>file://$PROJECT_DIR$/model/bcar.go</url>
+          <line>2</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
+          <url>file://$PROJECT_DIR$/model/bcitem.go</url>
+          <line>2</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="5" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/main.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" selection-start-line="1" selection-end-line="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/model/bcitem.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="28" column="70" lean-forward="true" selection-start-line="28" selection-start-column="70" selection-end-line="28" selection-end-column="70" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" selection-start-line="1" selection-end-line="1" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/model/bcitem.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1140">
@@ -567,13 +670,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ctrl/bcapinvoice.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="435">
-          <caret line="29" column="1" lean-forward="true" selection-start-line="29" selection-start-column="1" selection-end-line="29" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ctrl/bcstkissue.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="795">
@@ -584,13 +680,6 @@
     <entry file="file://$PROJECT_DIR$/config/config.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-225" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ctrl/resp.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" selection-start-line="7" selection-end-line="7" />
-        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/model/bcpayment.go">
@@ -607,45 +696,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ctrl/init.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" selection-start-line="2" selection-end-line="2" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/config.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="45">
           <caret line="3" column="21" selection-start-line="3" selection-start-column="21" selection-end-line="3" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ctrl/bcitem.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="341">
-          <caret line="58" column="25" lean-forward="true" selection-start-line="58" selection-start-column="25" selection-end-line="58" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ctrl/bcar.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="15" column="28" selection-start-line="15" selection-start-column="28" selection-end-line="15" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ctrl/bcarinvoice.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="35" column="26" selection-start-line="35" selection-start-column="26" selection-end-line="35" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/model/bcitem.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="900">
-          <caret line="65" column="1260" selection-start-line="65" selection-start-column="1260" selection-end-line="65" selection-end-column="1260" />
         </state>
       </provider>
     </entry>
@@ -656,52 +710,40 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/model/bcar.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="795">
-          <caret line="57" column="1058" selection-start-line="57" selection-start-column="1058" selection-end-line="57" selection-end-column="1058" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/model/bcarinvoice.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="656" column="22" selection-start-line="656" selection-start-column="22" selection-end-line="656" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/model/bcreceipt1.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="46">
-          <caret line="465" column="5" selection-start-line="465" selection-start-column="5" selection-end-line="465" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ctrl/bcap.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="35" column="34" selection-start-line="35" selection-start-column="34" selection-end-line="35" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/model/bcap.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="720">
-          <caret line="52" column="60" selection-start-line="52" selection-start-column="60" selection-end-line="52" selection-end-column="60" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/model/bcapinvoice.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3015">
-          <caret line="206" column="9" selection-start-line="206" selection-start-column="9" selection-end-line="206" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ctrl/bcpayment.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
           <caret line="15" column="29" selection-start-line="15" selection-start-column="29" selection-end-line="15" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/doc.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="23625">
+            <caret line="1575" selection-start-line="1574" selection-end-line="1575" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ctrl/bcitem.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="795">
+          <caret line="58" column="25" selection-start-line="58" selection-start-column="25" selection-end-line="58" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ctrl/bccreditnote.go">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/bcitem.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" selection-start-line="2" selection-end-line="2" />
+          <folding>
+            <element signature="e#15#85#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -712,36 +754,117 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/doc.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="300">
-            <caret line="1581" column="13" selection-start-line="1581" selection-start-column="13" selection-end-line="1581" selection-end-column="13" />
-            <folding>
-              <element signature="e#49#64#0" />
-              <element signature="e#3798#3820#0" />
-              <element signature="e#16245#16266#0" />
-              <element signature="e#23534#23551#0" />
-              <element signature="e#27381#27396#0" />
-              <element signature="e#30162#30184#0" />
-              <element signature="e#39210#39230#0" />
-            </folding>
-          </first_editor>
-          <second_editor />
+    <entry file="file://$PROJECT_DIR$/model/bcstkissue.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="855">
+          <caret line="57" column="58" selection-start-line="57" selection-start-column="58" selection-end-line="57" selection-end-column="58" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/model/bcstkissue.go">
+    <entry file="file://$PROJECT_DIR$/model/bcreceipt1.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="57" column="58" lean-forward="true" selection-start-line="57" selection-start-column="58" selection-end-line="57" selection-end-column="58" />
+        <state relative-caret-position="6975">
+          <caret line="465" column="5" selection-start-line="465" selection-start-column="5" selection-end-line="465" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ctrl/init.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="10" selection-start-line="10" selection-end-line="22" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ctrl/resp.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" selection-start-line="7" selection-end-line="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/bcsaleorder.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3060">
+          <caret line="209" column="5" selection-start-line="209" selection-start-column="5" selection-end-line="209" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ctrl/bcapinvoice.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="435">
+          <caret line="34" column="29" selection-start-line="34" selection-start-column="29" selection-end-line="34" selection-end-column="29" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/main.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="257">
-          <caret line="49" column="16" selection-start-line="49" selection-start-column="16" selection-end-line="49" selection-end-column="16" />
+        <state relative-caret-position="405">
+          <caret line="33" column="48" selection-start-line="33" selection-start-column="48" selection-end-line="33" selection-end-column="48" />
+          <folding>
+            <element signature="e#14#115#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ctrl/bcap.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="660">
+          <caret line="49" selection-start-line="49" selection-end-line="70" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ctrl/bcarinvoice.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="35" column="26" selection-start-line="35" selection-start-column="26" selection-end-line="35" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ctrl/bcar.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="15" column="28" selection-start-line="15" selection-start-column="28" selection-end-line="15" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/bcap.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1305">
+          <caret line="91" column="28" selection-start-line="91" selection-start-column="28" selection-end-line="91" selection-end-column="28" />
+          <folding>
+            <element signature="e#15#69#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/bcapinvoice.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="8880">
+          <caret line="597" selection-start-line="597" selection-end-line="597" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/bcar.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1725">
+          <caret line="119" column="24" selection-start-line="119" selection-start-column="24" selection-end-line="119" selection-end-column="24" />
+          <folding>
+            <element signature="e#15#69#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/bcarinvoice.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="10215">
+          <caret line="686" selection-start-line="686" selection-end-line="698" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/bccreditnote.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="408" column="23" selection-start-line="408" selection-start-column="23" selection-end-line="408" selection-end-column="23" />
         </state>
       </provider>
     </entry>
