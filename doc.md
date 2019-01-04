@@ -1,8 +1,8 @@
-#API Document wetv
+# Standard API Document
 
-#####Table BCAr
 
-######API Name
+
+###### API Name
 
 - ค้นหาลูกค้าโดยค้นหาจาก รหัสลูกค้า
 - GET 
@@ -1576,21 +1576,4 @@
 - GET 
    - http://localhost:8001/stkissue?docno=S01-PX6112-0030
    - response
-```json
 
-```
-
-- ค้นหาเอกสารเบิกสินค้าโดยค้นหาจาก คำค้นหา
-- GET 
-   - http://localhost:8001/stkissues?keyword=S01-PX6112-0030
-   - response
-```json
-
-```
-
-- บันทึกและแก้ไขข้อมูลเบิกสินค้า
-- POST
-    - Request
- ```json
-       
-```
